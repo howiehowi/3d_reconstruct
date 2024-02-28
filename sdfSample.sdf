@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <sdf version="1.6"> 
-  <model name="my_model">
+  <model name="reconstruction">
     <link name="base_link">
       <pose>0.0 0.0 0.0 0 -0 0</pose>
       <inertial>
@@ -25,7 +25,7 @@
       <visual name="visual">
         <geometry>
           <mesh>
-            <uri>file:///usr/share/gazebo-11/models/3d/3DCube.stl</uri>
+            <uri>file:///home/robot/catkin_ws/src/arm_gazebo/models/3Dreconstruction/meshes/reconstruction.stl</uri>
             <scale>0.003 0.003 0.003</scale>
           </mesh>
         </geometry>
@@ -37,7 +37,7 @@
         <pose>0 0 0 0 -0 0</pose>
         <geometry>
           <mesh>
-            <uri>file:///usr/share/gazebo-11/models/3d/3DCube.stl</uri>
+            <uri>file:///home/robot/catkin_ws/src/arm_gazebo/models/3Dreconstruction/meshes/reconstruction.stl</uri>
             <scale>0.003 0.003 0.003</scale>
           </mesh>
         </geometry>
