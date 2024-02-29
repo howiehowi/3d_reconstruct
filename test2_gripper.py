@@ -1,0 +1,52 @@
+#!/usr/bin/env python
+#THIS WORK IN MOVIT PANDA WHICH CAN ACHIEVE MOVEMENT!!!
+import sys
+import rospy
+import moveit_commander
+import moveit_msgs.msg
+import geometry_msgs.msg
+import tf
+
+def move_panda_arm():
+    moveit_commander.roscpp_initialize(sys.argv)
+    rospy.init_node('move_panda_arm_py', anonymous=True)
+
+    robot = moveit_commander.RobotCommander()
+    scene = moveit_commander.PlanningSceneInterface()
+    group_name = "panda_arm"
+    move_group = moveit_commander.MoveGroupCommander(group_name)
+    display_trajectory_publisher = rospy.Publisher('/move_group/display_planned_path',
+                                                   moveit_msgs.msg.DisplayTrajectory,
+                                                   queue_size=20)
+
+    # Define target position and orientation (Euler angles: roll, pitch, yaw)
+    target_position = [0.34, 0.45, 0.3]  # x, y, z
+    target_orientation = [0, 3.14, 0]  # roll, pitch, yaw in radians
+
+    # Convert Euler angles to quaternion for orientation
+    quaternion = tf.transformations.quaternion_from_euler(*target_orientation)
+
+    # Set the pose target
+    pose_target = geometry_msgs.msg.Pose()
+    pose_target.orientation.x = quaternion[0]
+    pose_target.orientation.y = quaternion[1]
+    pose_target.orientation.z = quaternion[2]
+    pose_target.orientation.w = quaternion[3]
+    pose_target.position.x = target_position[0]
+    pose_target.position.y = target_position[1]
+    pose_target.position.z = target_position[2]
+
+    move_group.set_pose_target(pose_target)
+
+    # Plan and execute
+    plan = move_group.go(wait=True)
+    move_group.stop()
+    move_group.clear_pose_targets()
+
+    moveit_commander.roscpp_shutdown()
+
+if __name__ == '__main__':
+    try:
+        move_panda_arm()
+    except rospy.ROSInterruptException:
+        pass
