@@ -26,7 +26,7 @@
         <geometry>
           <mesh>
             <uri>file:///home/robot/.gazebo/models/3Dreconstruction/meshes/reconstruction.stl</uri>
-            <scale>0.0003 0.0003 0.0003</scale>
+            <scale>0.00006 0.00006 0.00006</scale>
           </mesh>
         </geometry>
         <pose>0 0 0 0 -0 0</pose>
@@ -38,7 +38,7 @@
         <geometry>
           <mesh>
             <uri>file:///home/robot/.gazebo/models/3Dreconstruction/meshes/reconstruction.stl</uri>
-            <scale>0.003 0.003 0.003</scale>
+            <scale>0.0006 0.0006 0.0006</scale>
           </mesh>
         </geometry>
         <surface>
