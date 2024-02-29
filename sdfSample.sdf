@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <sdf version="1.6">
   <model name="my_model">
-    <static>false</static> <!-- Ensure the model is not static -->
+    <!-- Removed the static tag to ensure the model is dynamic and affected by gravity -->
     <link name="base_link">
-      <!-- Start position at (0.4, 0.4, some_value_above_ground), and the orientation (roll, pitch, yaw) -->
-      <pose>0.4 0.4 1 0 0 0</pose>
+      <!-- Set the initial pose to be above the ground with x=0.4, y=0.4, z=0.5 -->
+      <pose>0.4 0.4 0.5 0 0 0</pose>
       <inertial>
         <mass>0.1024</mass>
         <inertia>
@@ -25,7 +25,7 @@
         <geometry>
           <mesh>
             <uri>file:///home/robot/.gazebo/models/3Dreconstruction/meshes/reconstruction.stl</uri>
-            <!-- Set scale uniformly for visual geometry -->
+            <!-- Ensure the scale is uniform for visual geometry -->
             <scale>0.00006 0.00006 0.00006</scale>
           </mesh>
         </geometry>
@@ -33,12 +33,10 @@
         <pose>0 0 0 0 0 0</pose>
       </visual>
       <collision name="collision">
-        <laser_retro>0</laser_retro>
-        <max_contacts>10</max_contacts>
         <geometry>
           <mesh>
             <uri>file:///home/robot/.gazebo/models/3Dreconstruction/meshes/reconstruction.stl</uri>
-            <!-- Set scale uniformly for collision geometry -->
+            <!-- Ensure the scale is uniform for collision geometry -->
             <scale>0.00006 0.00006 0.00006</scale>
           </mesh>
         </geometry>
@@ -54,7 +52,6 @@
             <threshold>1000000</threshold>
           </bounce>
           <contact>
-            <collide_bitmask>1</collide_bitmask>
             <ode>
               <soft_cfm>0</soft_cfm>
               <soft_erp>0.2</soft_erp>
