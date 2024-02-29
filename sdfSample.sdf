@@ -4,7 +4,7 @@
     <!-- Removed the static tag to ensure the model is dynamic and affected by gravity -->
     <link name="base_link">
       <!-- Set the initial pose to be above the ground with x=0.4, y=0.4, z=0.5 -->
-      <pose>0.4 0.4 0.5 0 0 0</pose>
+      <pose>0 0 0 0 0 0</pose>
       <inertial>
         <mass>0.1024</mass>
         <inertia>
